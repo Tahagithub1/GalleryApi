@@ -12,4 +12,4 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/user', [AuthController::class, 'user']);
     Route::post('/logout', [AuthController::class, 'logout']);
 });
-Route::middleware(['auth:api', 'verify.jwt'])->post('/messages', [MessageController::class, 'store']);
+Route::middleware(['auth:api'])->post('/messages', [MessageController::class, 'store']);

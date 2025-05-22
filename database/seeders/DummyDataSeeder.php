@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Message\Message;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DummyDataSeeder extends Seeder

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Message;
 
 use App\Models\Message\Message;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -20,6 +20,7 @@ class MessageFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id' => \App\Models\User::factory(),
             'message' => $this->faker->paragraph(),
         ];
     }
