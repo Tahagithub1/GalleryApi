@@ -16,15 +16,21 @@ Route::middleware('auth:api')->group(function () {
 });
 Route::middleware(['auth:api'])->post('/messages', [MessageController::class, 'store']);
 
-Route::get('/images', function () {
-    $files = File::files(storage_path('app/public/images'));
+Route::get('/images/{path?}', function ($path = '') {
+    $fullPath = storage_path('app/public/images/' . $path);
 
-    $images = collect($files)->map(function ($file) {
+    if (!is_dir($fullPath)) {
+        return response()->json(['error' => 'پوشه پیدا نشد'], 404);
+    }
+
+    $files = File::files($fullPath);
+
+    $images = collect($files)->map(function ($file) use ($path) {
         return [
             'name' => $file->getFilename(),
-            'url' => asset('storage/images/' . $file->getFilename()),
+            'url' => asset('storage/images/' . trim($path, '/') . '/' . $file->getFilename()),
         ];
     });
 
     return response()->json($images);
-});
+})->where('path', '.*');
