@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\API\MessageController;
 use Illuminate\Support\Facades\File;
+use App\Http\Controllers\ImageController;
+
 
 
 Route::post('/register', [AuthController::class, 'register']);
@@ -16,21 +18,5 @@ Route::middleware('auth:api')->group(function () {
 });
 Route::middleware(['auth:api'])->post('/messages', [MessageController::class, 'store']);
 
-Route::get('/images/{path?}', function ($path = '') {
-    $fullPath = storage_path('app/public/images/' . $path);
 
-    if (!is_dir($fullPath)) {
-        return response()->json(['error' => 'پوشه پیدا نشد'], 404);
-    }
-
-    $files = File::files($fullPath);
-
-    $images = collect($files)->map(function ($file) use ($path) {
-        return [
-            'name' => $file->getFilename(),
-            'url' => asset('storage/images/' . trim($path, '/') . '/' . $file->getFilename()),
-        ];
-    });
-
-    return response()->json($images);
-})->where('path', '.*');
+Route::get('/images/{path?}', [ImageController::class, 'index'])->where('path', '.*');
