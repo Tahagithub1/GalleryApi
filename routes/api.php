@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\File;
 use App\Http\Controllers\imageController;
 
 
+Route::get('/',[\App\Http\Controllers\Api\HomeController::class,'index']);
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
