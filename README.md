@@ -50,6 +50,10 @@ Start the local development server
 
 You can now access the server at http://localhost:8000
 
+API Documentation (Swagger):  
+- Local: http://localhost:8000/api/documentation  
+- GitHub: https://github.com/Tahagithub1/GalleryApi/blob/main/public/docs/api-docs.json
+
 **TL;DR command list**
 
     git clone git@github.com:Tahagithub1/GalleryApi.git
