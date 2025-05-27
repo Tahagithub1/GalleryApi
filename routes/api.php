@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\API\MessageController;
 use Illuminate\Support\Facades\File;
-use App\Http\Controllers\ImageController;
+use App\Http\Controllers\imageController;
 
 
 
@@ -19,4 +19,4 @@ Route::middleware('auth:api')->group(function () {
 Route::middleware(['auth:api'])->post('/messages', [MessageController::class, 'store']);
 
 
-Route::get('/images/{path?}', [ImageController::class, 'index'])->where('path', '.*');
+Route::get('/images/{path?}', [imageController::class, 'index'])->where('path', '.*');

@@ -3,68 +3,79 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\File;
 
 class imageController extends Controller
 {
-    /**
-     * @OA\Get(
-     *     path="/images/{path}",
-     *     operationId="getImages",
-     *     tags={"Images"},
-     *     summary="Get images in folder or subfolder",
-     *     description="Returns list of images from given path or first subfolder",
-     *     @OA\Parameter(
-     *         name="path",
-     *         in="path",
-     *         description="Folder path",
-     *         required=false,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Response(
-     *         response=200,
-     *         description="Successful response"
-     *     ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="Folder not found"
-     *     )
-     * )
-     */
-    public function index($path = '')
+    public function index()
     {
-        $baseDir = storage_path('app/public/images');
-        $fullPath = $baseDir . '/' . trim($path, '/');
+        $basePath = storage_path('app/public/images');
+        $baseUrl = asset('storage/images');
 
-        if (is_dir($fullPath)) {
-            $files = File::files($fullPath);
+        $persianLabels = [
+            'portrait' => 'عکاسی پرتره',
+            'Breakfast' => 'صبحانه',
+            'food-and-drinks' => 'غذا و نوشیدنی',
+            'wedding' => 'عروسی',
+            'product' => 'محصولات',
+            'men' => 'مردانه',
+            'women' => 'زنانه',
+            'child' => 'کودک',
+            'food' => 'غذا',
+            'landscape' => 'منظره'
+        ];
 
-            if (count($files) === 0) {
-                $subDirs = File::directories($fullPath);
+        $categoryIcons = [
+            'portrait' => 'fa-camera-retro',
+            'breakfast' => 'fa-coffee',
+            'nature' => 'fa-tree',
+            'wedding' => 'fa-heart',
+            'product' => 'fa-shopping-bag'
+        ];
 
-                if (count($subDirs) > 0) {
-                    $fullPath = $subDirs[0];
-                    $relativePath = str_replace($baseDir . '/', '', $fullPath);
-                } else {
-                    return response()->json(['error' => 'No files or subdirectories found in this folder.'], 404);
-                }
-            } else {
-                $relativePath = trim($path, '/');
+        $scanFolder = function ($path, $relativePath = '') use (&$scanFolder, $baseUrl, $persianLabels, $categoryIcons) {
+            $items = [];
+            $fullPath = $path . ($relativePath ? '/' . $relativePath : '');
+            $pathParts = explode('/', $relativePath);
+            $currentFolder = end($pathParts);
+
+            foreach (File::directories($fullPath) as $dir) {
+                $name = basename($dir);
+                $newRelativePath = trim($relativePath . '/' . $name, '/');
+                $isMainCategory = count(explode('/', $newRelativePath)) === 1;
+
+                $folderData = [
+                    'type' => 'folder',
+                    'name' => $name,
+                    'name_fa' => $persianLabels[$name] ?? $name,
+                    'path' => $newRelativePath,
+                    'children' => $scanFolder($path, $newRelativePath),
+                    'icon' => $isMainCategory ? ($categoryIcons[$name] ?? 'fa-folder') : 'fa-folder-open'
+                ];
+
+                $items[] = $folderData;
             }
-        } else {
-            return response()->json(['error' => 'Folder not found.'], 404);
-        }
 
-        $files = File::files($fullPath);
+            foreach (File::files($fullPath) as $file) {
+                $fileName = $file->getFilename();
+                $items[] = [
+                    'type' => 'file',
+                    'name' => $fileName,
+                    'name_fa' => pathinfo($fileName, PATHINFO_FILENAME),
+                    'url' => $baseUrl . '/' . trim($relativePath, '/') . '/' . $fileName,
+                    'icon' => 'fa-file'
+                ];
+            }
 
-        $images = collect($files)->map(function ($file) use ($relativePath) {
-            return [
-                'name' => $file->getFilename(),
-                'url' => asset('storage/images/' . $relativePath . '/' . $file->getFilename()),
-            ];
-        });
+            return $items;
+        };
 
-        return response()->json($images);
+        $tree = $scanFolder($basePath);
+
+        return response()->json([
+            'success' => true,
+            'data' => $tree,
+            'message' => 'ساختار پوشه‌ها با موفقیت دریافت شد'
+        ]);
     }
 }
