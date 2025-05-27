@@ -1,23 +1,23 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\API\MessageController;
-use Illuminate\Support\Facades\File;
-use App\Http\Controllers\imageController;
+use App\Http\Controllers\Api\MessageController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\ImageController;
 
-
-Route::get('/',[\App\Http\Controllers\Api\HomeController::class,'index']);
-
+// Auth routes
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
+// Protected routes with auth:api middleware
 Route::middleware('auth:api')->group(function () {
     Route::get('/user', [AuthController::class, 'user']);
     Route::post('/logout', [AuthController::class, 'logout']);
+
+    Route::post('/messages', [MessageController::class, 'store']);
+    Route::post('/events', [EventController::class, 'store']);
 });
-Route::middleware(['auth:api'])->post('/messages', [MessageController::class, 'store']);
 
-
-Route::get('/images/{path?}', [imageController::class, 'index'])->where('path', '.*');
+// Public routes
+Route::get('/folder-tree', [ImageController::class, 'index']);
