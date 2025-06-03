@@ -1,0 +1,155 @@
+[33mcommit 6eb8c32c20b528dbf6923d1972abb6ed0ef89355[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Wed May 28 22:47:58 2025 +0330
+
+    edit category
+
+[33mcommit c172a547db10c407b4e28e02819f78d6e9e27b41[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Wed May 28 22:46:59 2025 +0330
+
+    add labels and icon category
+
+[33mcommit fac01533040a7dadf44887846d16c48e8bfdfdf9[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Tue May 27 20:38:09 2025 +0330
+
+    events add the swagger
+
+[33mcommit ddd2a30925c50655eab1b726ae348ba937621d9d[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Tue May 27 20:32:07 2025 +0330
+
+    add events for reserve
+
+[33mcommit 58e5cb2144da3aa43f10bfc96609c8404bf549be[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Tue May 27 20:03:16 2025 +0330
+
+    compeleted swagger auth and message
+
+[33mcommit 2a3f2a5b58af6abda40498b8713e9cab0c6993e7[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Tue May 27 19:02:29 2025 +0330
+
+    test swagger and configration
+
+[33mcommit 34db4bec39c852e414bce82340ddfc12bea6d7e3[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Tue May 27 18:49:26 2025 +0330
+
+    swagger start and image path to controller compeleted
+
+[33mcommit 9960975e2ddde5c2b5d7b6fbb34716c4338e0a10[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Sun May 25 23:22:32 2025 +0330
+
+    swagger and controller image
+
+[33mcommit 4ec50ed85bbc22b49c66129633167e9956524b97[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Fri May 23 23:42:08 2025 +0330
+
+    image update
+
+[33mcommit 537d4785f871cce44de70f5b52bac03b16e2acda[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Fri May 23 23:08:14 2025 +0330
+
+    images in storage
+
+[33mcommit 7e0ad9ce07ac98c004c65072160b2ae3f3310a75[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Fri May 23 23:01:49 2025 +0330
+
+    images
+
+[33mcommit 4ff523df4a3daa30b03462fd28ccb04366f44e69[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Fri May 23 22:54:58 2025 +0330
+
+    min name
+
+[33mcommit 9bd19d997d23134fb9288d16ac61aa6845dd7de9[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Fri May 23 22:52:46 2025 +0330
+
+    min name
+
+[33mcommit b6fb7179b80911b901079b7eec2c975222d21593[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Fri May 23 22:50:10 2025 +0330
+
+    fillable mobile
+
+[33mcommit 883325ea534a0e24518b85ab64fce931f773cb05[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Fri May 23 22:48:09 2025 +0330
+
+    register-clone
+
+[33mcommit 20f21eac64de9df81f486062bc24cd8c53dc20f6[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Fri May 23 22:42:28 2025 +0330
+
+    ruls2
+
+[33mcommit f0a0ec1b9042ee95b5712eef8aab02867b3c162a[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Fri May 23 22:40:46 2025 +0330
+
+    ruls
+
+[33mcommit a7f1341d28401e29d4eabc7052c061af71e610d5[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Fri May 23 22:39:25 2025 +0330
+
+    pass and mobile
+
+[33mcommit 3a81b9977942e2970b2a804ad7e331c183c53b9b[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Thu May 22 19:38:07 2025 +0330
+
+    Message
+
+[33mcommit d2cc33f900a8fbcf7a51f41636d22d6559420f5f[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Thu May 22 18:40:07 2025 +0330
+
+    MessageCompeleted
+
+[33mcommit 55e9cd8ef215c0b7f0ef9a266aedb1cda0e101ee[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Thu May 22 18:26:59 2025 +0330
+
+    MakeSeedAndFactory
+
+[33mcommit 066352af5fd14419f522053a2bca820d75017281[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Thu May 22 14:21:01 2025 +0330
+
+    Auth Token Flow Compeleted
+
+[33mcommit f441e111c4e0501052031ac405185ce48c1c569f[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Thu May 22 12:55:08 2025 +0330
+
+    SetConfigForAuthAndDocker
+
+[33mcommit 952a1731702c8ed62e723bd26161c0af221f4ccf[m
+Author: Paradox <153533715+Tahagithub1@users.noreply.github.com>
+Date:   Thu May 22 12:25:18 2025 +0330
+
+    Update README.md
+
+[33mcommit 5d0a2d0494d9c873da06712d4a0d16a6af268411[m
+Author: Paradox <153533715+Tahagithub1@users.noreply.github.com>
+Date:   Thu May 22 12:24:50 2025 +0330
+
+    Update README.md
+
+[33mcommit 18e37577bcf643242841c7b3d2f1c9d1aa1aa133[m
+Author: Paradox <mogevaraluffyy@gmail.com>
+Date:   Thu May 22 12:05:11 2025 +0330
+
+    first commit

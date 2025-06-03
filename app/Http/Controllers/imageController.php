@@ -14,7 +14,7 @@ class imageController extends Controller
 
         $persianLabels = [
             'portrait' => 'عکاسی پرتره',
-            'food-and-drinks' => 'غذا و نوشیدنی',
+            'food-and-drinks' => 'عکاسی غذا و نوشیدنی',
             'Breakfast' => 'صبحانه',
             'Cafe' =>  'کافه',
             'Cake' =>  'کیک',
@@ -24,13 +24,18 @@ class imageController extends Controller
 
 
             'products' => 'محصولات',
-            'product-photography' => 'محصولات' ,
+            'product-photography' => 'عکاسی محصولات' ,
             'perfume' => 'عطر' ,
             'makeup-products' => 'لوازم آرایشی',
             'macro' => 'ماکرو',
             'leather' => 'چرم',
             'bag' => 'کیف',
             'shoe' => 'کفش',
+
+
+            'outfit' => 'عکاسی پوشاک',
+            'womens-fashion' => 'زنانه',
+            'kids-clothing' => 'کودک'
 
         ];
 
@@ -39,6 +44,7 @@ class imageController extends Controller
             'food-and-drinks' => 'material-symbols:fastfood-outline-rounded',
             'products' => 'fluent-mdl2:product',
             'product-photography' => 'fluent-mdl2:product',
+            'outfit' => 'hugeicons:dress-02',
         ];
 
         $scanFolder = function ($path, $relativePath = '') use (&$scanFolder, $baseUrl, $persianLabels, $categoryIcons) {
