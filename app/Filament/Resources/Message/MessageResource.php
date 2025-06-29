@@ -13,6 +13,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Morilog\Jalali\Jalalian;
 
 class MessageResource extends Resource
 {
@@ -50,8 +51,10 @@ class MessageResource extends Resource
                     ->tooltip(fn($record): string => $record->message)
                     ->searchable()
                     ->sortable(),
+
                 TextColumn::make('created_at')
-                    ->label('تاریخ ارسال مسیج')
+                    ->label('تاریخ و ساعت ارسال پیام')
+                    ->formatStateUsing(fn ($state) => Jalalian::fromDateTime($state)->format('Y/m/d H:i'))
                     ->searchable()
                     ->sortable(),
             ])

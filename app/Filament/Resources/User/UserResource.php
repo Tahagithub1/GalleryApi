@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Tables\Columns\TextColumn;
+use Morilog\Jalali\Jalalian;
 
 class UserResource extends Resource
 {
@@ -51,7 +52,8 @@ class UserResource extends Resource
 //                ->searchable()
 //                ->sortable(),
             TextColumn::make('created_at')
-                ->label('تاریخ عضویت')
+                ->label('تاریخ و ساعت عضویت')
+                ->formatStateUsing(fn ($state) => Jalalian::fromDateTime($state)->format('Y/m/d H:i'))
                 ->searchable()
                 ->sortable(),
             ])
