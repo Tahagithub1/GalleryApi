@@ -3,12 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 
 class imageController extends Controller
 {
     public function index()
     {
+
+        $cacheKey = 'image_structure_cache';
+
+        if (Cache::has($cacheKey)) {
+            return response()->json([
+                'success' => true,
+                'data' => Cache::get($cacheKey),
+                'message' => 'ساختار پوشه‌ها از کش با موفقیت دریافت شد',
+                'cached' => true
+            ]);
+        }
+
         $basePath = storage_path('app/public/images');
         $baseUrl = asset('storage/images');
 
@@ -86,10 +99,14 @@ class imageController extends Controller
 
         $tree = $scanFolder($basePath);
 
+        Cache::put($cacheKey, $tree, now()->addHours(24));
+
+
         return response()->json([
             'success' => true,
             'data' => $tree,
-            'message' => 'ساختار پوشه‌ها با موفقیت دریافت شد'
+            'message' => 'ساختار پوشه‌ها با موفقیت دریافت شد',
+            'cached' => false
         ]);
     }
 }
