@@ -54,6 +54,9 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+        if (!auth()->check()) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
         $validated = $request->validate([
             'date' => 'required|string|regex:/^\d{4}\/\d{2}\/\d{2}$/',
             'time' => 'required|string|regex:/^\d{2}:\d{2}$/',
@@ -69,10 +72,10 @@ class EventController extends Controller
         }
 
         $event = Event::create([
+            'user_id' => auth()->id(),
             'date' => $jalaliDate,
             'time' => $validated['time'],
             'description' => $validated['description'] ?? null,
-            'user_id' => auth()->id(),
         ]);
 
         return response()->json([

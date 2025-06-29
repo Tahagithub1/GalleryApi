@@ -22,7 +22,8 @@ class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
-        return $panel
+        return $panel            ->brandName('سامانه مدیریتی رزرو عکاسی')
+
             ->default()
             ->id('admin')
             ->path('admin')

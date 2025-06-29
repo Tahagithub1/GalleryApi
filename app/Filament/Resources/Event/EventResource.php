@@ -13,6 +13,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Morilog\Jalali\Jalalian;
 
 class EventResource extends Resource
 {
@@ -38,7 +39,29 @@ class EventResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')
+                TextColumn::make('user.name')
+//                    ->relationship('users', 'name')
+                    ->label('نام کاربر')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('date')
+                    ->label('تاریخ رزرو')
+                    ->formatStateUsing(fn ($state) => Jalalian::fromDateTime($state)->format('Y/m/d'))
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('time')
+                    ->label('تایم رزرو')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('description')
+                    ->label('پیام کوتاه رزرو')
+                    ->searchable()
+                    ->sortable(),
+//                TextColumn::make('created_at')
+//                    ->label('تاریخ و ساعت پیام')
+//                    ->formatStateUsing(fn ($state) => Jalalian::fromDateTime($state)->format('Y/m/d H:i'))
+//                    ->searchable()
+//                    ->sortable(),
             ])
             ->filters([
                 //
