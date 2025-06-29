@@ -72,6 +72,7 @@ class EventController extends Controller
             'date' => $jalaliDate,
             'time' => $validated['time'],
             'description' => $validated['description'] ?? null,
+            'user_id' => auth()->id(),
         ]);
 
         return response()->json([
