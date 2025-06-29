@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Columns\TextColumn;
 
 class UserResource extends Resource
 {
@@ -37,13 +38,30 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')
+                ->label('نام کاربر')
+                ->searchable()
+                ->sortable(),
+                TextColumn::make('email')
+                ->label('ایمیل')
+                ->searchable()
+                ->sortable(),
+//                TextColumn::make('mobile')
+//                ->label('شماره تلفن')
+//                ->searchable()
+//                ->sortable(),
+            TextColumn::make('created_at')
+                ->label('تاریخ عضویت')
+                ->searchable()
+                ->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+//                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -66,5 +84,9 @@ class UserResource extends Resource
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
+    }
+    public static function canCreate(): bool
+    {
+        return false;
     }
 }
